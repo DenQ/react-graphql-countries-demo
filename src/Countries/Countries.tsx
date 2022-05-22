@@ -5,7 +5,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import CountriesList from './List/List';
 import CountryInfo from './CountryInfo/CountryInfo';
-import { Country } from '../Interfaces/Countries';
+import { Country } from '../Interfaces/BaseTypes';
 
 const Item = styled(Paper)(({ theme }: any) => ({
   // backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',

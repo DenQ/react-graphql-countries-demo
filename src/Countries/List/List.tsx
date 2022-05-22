@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { gql, useQuery } from '@apollo/client';
 import { Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { Country } from '../../Interfaces/Countries';
+import { Country } from '../../Interfaces/BaseTypes';
 import client from '../../utils/client';
 import Spinner from "../../components/spinner";
 
