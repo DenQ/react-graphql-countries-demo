@@ -1,11 +1,8 @@
 import React from 'react';
+import CountriesMain from './Countries/Countries';
 
 function App() {
-  return (
-    <div className="App">
-        555
-    </div>
-  );
+  return <CountriesMain />;
 }
 
 export default App;
