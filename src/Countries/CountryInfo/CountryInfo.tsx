@@ -1,15 +1,12 @@
 import React from 'react';
 import { Country } from '../../Interfaces/Countries';
-import { ApolloClient, gql, InMemoryCache, useQuery } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
+import client from '../../utils/client';
+import Spinner from '../../components/spinner';
 
 type Props = {
   country: Country;
 };
-
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  uri: 'https://countries.trevorblades.com',
-});
 
 // @ts-ignore
 const getCountry = (code: string) => gql`
@@ -27,7 +24,7 @@ const CountryInfo: React.FC<Props> = ({ country }) => {
   });
 
   if (loading) {
-    return <>loading</>;
+    return <Spinner />;
   }
 
   return <pre>{JSON.stringify(data.country, null, 2)}</pre>;

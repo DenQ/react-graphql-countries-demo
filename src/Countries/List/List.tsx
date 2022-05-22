@@ -1,19 +1,16 @@
 import React, { useCallback } from 'react';
-import { ApolloClient, InMemoryCache, gql, useQuery } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import { Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Country } from '../../Interfaces/Countries';
+import client from '../../utils/client';
+import Spinner from "../../components/spinner";
 
 type Props = {
   selectCountryHandle: (country: Country) => void;
 };
 
 const ButtonItemCountry = styled(Button)(({ theme }: any) => ({}));
-
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  uri: 'https://countries.trevorblades.com',
-});
 
 // @ts-ignore
 const LIST_COUNTRIES = gql`
@@ -37,7 +34,8 @@ const CountriesList: React.FC<Props> = ({ selectCountryHandle }) => {
   );
 
   if (loading || error) {
-    return <p>{error ? error.message : 'Loading...'}</p>;
+    // return <p>{error ? error.message : 'Loading...'}</p>;
+    return <Spinner />
   }
 
   return (
