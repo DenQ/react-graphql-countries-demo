@@ -1,5 +1,6 @@
 {
-  "name": "fin-hub",
+  "name": "react-graphql-countries-demo",
+  "homepage": "https://denq.github.io/react-graphql-countries-demo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -32,6 +33,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-react-hooks": "^4.5.0",
+    "gh-pages": "^4.0.0",
     "graphql": "^16.5.0",
     "jsdom": "^19.0.0",
     "jsdom-global": "^3.0.2",
@@ -51,7 +53,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
