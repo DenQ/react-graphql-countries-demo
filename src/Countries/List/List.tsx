@@ -1,18 +1,14 @@
 import React, { useCallback } from 'react';
 import { gql, useQuery } from '@apollo/client';
 import { Button } from '@mui/material';
-import { styled } from '@mui/material/styles';
 import { Country } from '../../Interfaces/BaseTypes';
 import client from '../../utils/client';
-import Spinner from "../../components/spinner";
+import Spinner from '../../components/spinner';
 
 type Props = {
   selectCountryHandle: (country: Country) => void;
 };
 
-const ButtonItemCountry = styled(Button)(({ theme }: any) => ({}));
-
-// @ts-ignore
 const LIST_COUNTRIES = gql`
   {
     countries {
@@ -34,23 +30,22 @@ const CountriesList: React.FC<Props> = ({ selectCountryHandle }) => {
   );
 
   if (loading || error) {
-    // return <p>{error ? error.message : 'Loading...'}</p>;
-    return <Spinner />
+    return <Spinner />;
   }
 
   return (
     <>
       {data.countries.map((item: Country) => {
         return (
-          <ButtonItemCountry
+          <Button
             onClick={onClick(item)}
             key={item.code}
-            color={'primary'}
+            color="primary"
             variant="outlined"
             fullWidth
           >
             {item.name}
-          </ButtonItemCountry>
+          </Button>
         );
       })}
     </>

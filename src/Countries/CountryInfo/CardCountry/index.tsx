@@ -7,20 +7,33 @@ import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Country } from '../../../Interfaces/BaseTypes';
+import ListPresenter from '../../../components/ListPresenter/ListPresenter';
+import getPhones from '../../../utils/getPhones';
 
 const Flag = styled(Box)(() => ({
-  // fontSize: '128px',
   fontSize: '192px',
+}));
+
+const GridItem = styled(Grid)(() => ({
 }));
 
 type Props = {
   country: Country;
 };
 
-const CardCountry: React.FC<Props> = ({ country }) => {
-  console.log(123, country);
-  const { code, name, continent, emoji, native, phone, capital } = country;
-
+const CardCountry: React.FC<Props> = ({
+  country: {
+    code,
+    name,
+    continent,
+    emoji,
+    native,
+    phone,
+    capital,
+    states,
+    languages,
+  },
+}) => {
   const title = useMemo(() => {
     if (capital) {
       return `${continent.name} > ${name} > ${capital}`;
@@ -28,8 +41,6 @@ const CardCountry: React.FC<Props> = ({ country }) => {
 
     return `${continent.name} > ${name}`;
   }, [continent, name, capital]);
-
-  const subTitle = `${native}`;
 
   return (
     <Card>
@@ -40,20 +51,20 @@ const CardCountry: React.FC<Props> = ({ country }) => {
           </Avatar>
         }
         title={title}
-        subheader={subTitle}
+        subheader={native}
       />
       <Flag>{emoji}</Flag>
       <CardContent>
-        <Grid container spacing={2}>
-          <Grid item xs={4}>
-            Phone code: {phone}
-          </Grid>
-          <Grid item xs={4}>
-            Tell code: {phone}
-          </Grid>
-          <Grid item xs={4}>
-            Tell code: {phone}
-          </Grid>
+        <Grid container spacing={2} alignItems="stretch"  direction="row" justifyContent="space-evenly">
+          <GridItem item xs={4}>
+            Phone code: <ListPresenter data={getPhones(phone)} />
+          </GridItem>
+          <GridItem item xs={4}>
+            Languages: <ListPresenter data={languages} />
+          </GridItem>
+          <GridItem item xs={4}>
+            States: <ListPresenter data={states} />
+          </GridItem>
         </Grid>
       </CardContent>
     </Card>

@@ -1,3 +1,8 @@
+export type Collection = {
+  code: string;
+  name: string;
+};
+
 export type Country = {
   code: string;
   name: string;
@@ -9,16 +14,12 @@ export type Country = {
   emojiU: string;
 
   continent: Continent;
-  languages: Language[];
+  languages: Collection[];
+  states: Collection[];
 };
 
 export type Continent = {
   code: string;
   name: string;
   countries: Country[];
-}
-
-export type Language = {
-  code: string;
-  name: string;
-}
+};

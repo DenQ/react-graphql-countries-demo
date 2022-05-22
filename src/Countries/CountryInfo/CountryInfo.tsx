@@ -1,6 +1,6 @@
 import React from 'react';
-import { Country } from '../../Interfaces/BaseTypes';
 import { gql, useQuery } from '@apollo/client';
+import { Country } from '../../Interfaces/BaseTypes';
 import client from '../../utils/client';
 import Spinner from '../../components/spinner';
 import CardCountry from './CardCountry';
@@ -9,7 +9,6 @@ type Props = {
   country: Country;
 };
 
-// @ts-ignore
 const getCountry = (code: string) => gql`
   query country {
     country (code: "${code}") {
@@ -50,11 +49,7 @@ const CountryInfo: React.FC<Props> = ({ country }) => {
     return <Spinner />;
   }
 
-  return (
-    <>
-      <CardCountry country={data.country} />
-    </>
-  );
+  return <CardCountry country={data.country} />;
 };
 
 export default CountryInfo;
