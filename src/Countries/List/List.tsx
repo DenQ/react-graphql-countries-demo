@@ -1,16 +1,14 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { ApolloClient, InMemoryCache, gql, useQuery } from '@apollo/client';
-import { Country } from '../../Interfaces/Countries';
 import { Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { Country } from '../../Interfaces/Countries';
 
-const ButtonItemCountry = styled(Button)(({ theme }: any) => ({
-  // ...theme.typography.body2,
-  // padding: theme.spacing(1),
-  // textAlign: 'center',
-  // color: theme.palette.text.secondary,
-  // height: 'inherit',
-}));
+type Props = {
+  selectCountryHandle: (country: Country) => void;
+};
+
+const ButtonItemCountry = styled(Button)(({ theme }: any) => ({}));
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -27,10 +25,16 @@ const LIST_COUNTRIES = gql`
   }
 `;
 
-type Props = {};
-
-const CountriesList: React.FC<Props> = () => {
+const CountriesList: React.FC<Props> = ({ selectCountryHandle }) => {
   const { data, loading, error } = useQuery(LIST_COUNTRIES, { client });
+
+  const onClick = useCallback(
+    (country: Country) => (e: any) => {
+      e.preventDefault();
+      selectCountryHandle(country);
+    },
+    [selectCountryHandle]
+  );
 
   if (loading || error) {
     return <p>{error ? error.message : 'Loading...'}</p>;
@@ -40,7 +44,13 @@ const CountriesList: React.FC<Props> = () => {
     <>
       {data.countries.map((item: Country) => {
         return (
-          <ButtonItemCountry key={item.code} color={'primary'} variant="outlined" fullWidth>
+          <ButtonItemCountry
+            onClick={onClick(item)}
+            key={item.code}
+            color={'primary'}
+            variant="outlined"
+            fullWidth
+          >
             {item.name}
           </ButtonItemCountry>
         );
