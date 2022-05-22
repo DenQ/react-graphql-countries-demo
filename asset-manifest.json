@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-graphql-countries-demo/static/css/main.682999b0.css",
+    "main.js": "/react-graphql-countries-demo/static/js/main.ccc5fca6.js",
+    "static/js/787.d2c842ec.chunk.js": "/react-graphql-countries-demo/static/js/787.d2c842ec.chunk.js",
+    "index.html": "/react-graphql-countries-demo/index.html",
+    "main.682999b0.css.map": "/react-graphql-countries-demo/static/css/main.682999b0.css.map",
+    "main.ccc5fca6.js.map": "/react-graphql-countries-demo/static/js/main.ccc5fca6.js.map",
+    "787.d2c842ec.chunk.js.map": "/react-graphql-countries-demo/static/js/787.d2c842ec.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.682999b0.css",
+    "static/js/main.ccc5fca6.js"
+  ]
+}
